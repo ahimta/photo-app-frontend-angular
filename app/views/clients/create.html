@@ -1,0 +1,92 @@
+<form role="form" name="clientForm" ng-submit="create(client)">
+  <fieldset>
+    <legend><h2>Personal information</h2></legend>
+    <div class="form-group"
+      ng-class="{'has-error': clientForm.name.$invalid}">
+      <input type="text" class="form-control" placeholder="Name" name="name" 
+        ng-model="client.name" required/>
+      <p class="help-block" ng-repeat="error in errors.name" ng-bind="error"></p>
+    </div>
+    <div class="form-group" ng-class="{'has-error': clientForm.email.$invalid}">
+      <input type="email" class="form-control" placeholder="Email" name="email"
+        ng-model="client.email" required/>
+      <p class="help-block" ng-repeat="error in errors.email" ng-bind="error"></p>
+    </div>
+  </fieldset>
+
+  <hr>
+
+  <fieldset>
+    <legend><h2>Photos</h2></legend>
+    <div class="form-group" ng-class="{'has-error': clientForm.photo.$invalid}">
+      <input type="file" class="form-control" placeholder="Photo" name="photo"
+        nv-file-select="" uploader="uploader"  required/>
+    </div>
+  </fieldset>
+
+  <div>
+      <table class="table table-striped">
+          <thead>
+              <tr>
+                  <th width="50%">Name</th>
+                  <th ng-show="uploader.isHTML5">Size</th>
+                  <th ng-show="uploader.isHTML5">Progress</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="item in uploader.queue">
+                  <td><strong>{{ item.file.name }}</strong></td>
+                  <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                  <td ng-show="uploader.isHTML5">
+                      <div class="progress" style="margin-bottom: 0;">
+                          <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                      </div>
+                  </td>
+                  <td class="text-center">
+                      <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                      <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                      <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                  </td>
+                  <td nowrap>
+                      <!-- <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                          <span class="glyphicon glyphicon-upload"></span> Upload
+                      </button> -->
+                      <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                          <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                      </button>
+                      <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                          <span class="glyphicon glyphicon-trash"></span> Remove
+                      </button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+
+      <div>
+          <div>
+              Queue progress:
+              <div class="progress" style="">
+                  <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+              </div>
+          </div>
+          <!-- <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+              <span class="glyphicon glyphicon-upload"></span> Upload all
+          </button> -->
+          <button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
+              <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+          </button>
+          <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
+              <span class="glyphicon glyphicon-trash"></span> Remove all
+          </button>
+      </div>
+  </div>
+
+  <br>
+
+  <div class="form-group">
+    <input type="submit" value="Join us" class="form-control btn btn-success btn-block"
+      ng-disabled="clientForm.$invalid || isUploading"/> 
+  </div>
+</form>

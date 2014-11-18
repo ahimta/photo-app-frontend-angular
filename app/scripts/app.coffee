@@ -17,16 +17,22 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'angularFileUpload'
   ])
   .config ($routeProvider) ->
     $routeProvider
       .when '/',
-        templateUrl: 'views/main.html'
-        controller: 'MainCtrl'
+        redirectTo: '/clients'
       .when '/about',
         templateUrl: 'views/about.html'
         controller: 'AboutCtrl'
+      .when '/clients',
+        templateUrl: 'views/clients/index.html'
+        controller: 'ClientsIndexCtrl'
+      .when '/clients/new',
+        templateUrl: 'views/clients/create.html'
+        controller: 'ClientsCreateCtrl'
       .otherwise
-        redirectTo: '/'
+        redirectTo: '/clients'
 

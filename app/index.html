@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head>
     <meta charset="utf-8">
     <title></title>
@@ -20,22 +20,48 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-          <li><a ng-href="#">Contact</a></li>
-        </ul>
-        <h3 class="text-muted">photoAppFrontendAngular</h3>
-      </div>
+    <header>
+      <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Brand</a>
+          </div>
 
-      <div ng-view=""></div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+          </div>
+        </div>
+      </nav>
 
-      <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+      <div class="jumbotron">
+        <h1 class="text-center">Hi there</h1>
+        <div class="text-center">
+          <a class="btn btn-success btn-lg" href="#/clients/new">
+            Join us <span class="glyphicon glyphicon-user"></span>
+          </a>
+        </div>
       </div>
-    </div>
+    </header>
+
+    <hr>
+
+    <div class="container" ng-view=""></div>
+
+    <hr>
+
+    <footer class="footer text-center">
+      <p class="lead">Abdullah Alansari 2014&copy;</p>
+    </footer>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -80,6 +106,7 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-file-upload/angular-file-upload.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -87,6 +114,8 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/clients/index.js"></script>
+        <script src="scripts/controllers/clients/create.js"></script>
         <!-- endbuild -->
 </body>
 </html>
