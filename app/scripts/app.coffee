@@ -24,9 +24,6 @@ angular
     $routeProvider
       .when '/',
         redirectTo: '/clients'
-      .when '/about',
-        templateUrl: 'views/about.html'
-        controller: 'AboutCtrl'
       .when '/clients',
         templateUrl: 'views/clients/index.html'
         controller: 'ClientsIndexCtrl'

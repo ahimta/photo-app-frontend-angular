@@ -1,1 +1,24 @@
-<p>This is the clients/index view.</p>
+<div class="row">
+  <div class="col-sm-6 col-md-4" ng-repeat="client in clients">
+    <div class="thumbnail">
+      <img ng-src="{{pictureUrl(client)}}" alt="...">
+      <div class="caption">
+        <p class="lead">
+          <span class="glyphicon glyphicon-user"></span>
+          &nbsp;
+          <span ng-bind="client.name"></span>
+        </p>
+        <p class="lead">
+          <span class="glyphicon glyphicon-envelope"></span>
+          &nbsp;
+          <span ng-bind="client.email"></span>
+        </p>
+        <p>
+          <button class="btn btn-danger"
+            role="button" ng-disabled="unauthorized(client)"
+            ng-click="destroy(client)">Delete</button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
